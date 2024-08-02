@@ -1,2 +1,4 @@
-<app-user-input (entry)="getUserInput($event)"></app-user-input>
-<app-investment-results [calculationResults]="results"/>
+<app-header/>
+<app-user-input (entry)="getUserInput($event)" (calculate)="showTable()"></app-user-input>
+@if(tableShown){
+<app-investment-results [calculationResults]="results"/>}

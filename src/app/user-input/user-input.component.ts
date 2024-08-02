@@ -13,11 +13,13 @@ import {UserInput} from "../investment-results/UserInput.model";
 })
 export class UserInputComponent {
   initialInvestment: number =0;
+  /* first thing worth to know is that it is received as a string anyway, so
+  * max eqauls initial investment to '0' and converts it later*/
   annualInvestment =0;
   expectedReturn =0;
   duration = 0;
   @Output() entry = new EventEmitter<UserInput>
-
+  @Output() calculate = new EventEmitter<void>
   submitEntry() {
     this.entry.emit({
       initialInvestment:this.initialInvestment,
@@ -25,5 +27,9 @@ export class UserInputComponent {
       expectedReturn: this.expectedReturn,
       duration: this.duration
     })
+  }
+
+  onCalculate() {
+    this.calculate.emit()
   }
 }
